@@ -22,3 +22,24 @@ def mazeCreate(n):
             else:
                 row.append(Fore.BLUE + u"\u25cc" + Fore.RESET)
         maze.append(row)
+
+
+   #Restricted the number of random walls to less than or equal to 25% of the total cells.
+    total_cells=n*n
+    number_of_cells=total_cells//4
+
+    wall_pairs=[]
+    while(len(wall_pairs) < number_of_cells):
+        temp_i=random.randint(0,n-1)
+        temp_j=random.randint(0,n-1)
+        if([temp_i,temp_j] not in wall_pairs):
+            wall_pairs.append([temp_i,temp_j])
+
+    #printing random walls on the box
+    
+    for i in range(n):
+        for j in range(n):
+            if([i,j] in wall_pairs and [i,j]!=[0,0] and [i,j]!=[n-1,n-1]):
+                maze[i][j]=Fore.RED+u"\u2593"+Fore.RESET
+
+    return maze
