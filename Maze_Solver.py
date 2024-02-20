@@ -43,3 +43,15 @@ def mazeCreate(n):
                 maze[i][j]=Fore.RED+u"\u2593"+Fore.RESET
 
     return maze
+
+def printMaze(box, size):
+    hrow = Fore.RED + '+' + '---+' * size + Fore.RESET
+    for i in range(size):
+        print(hrow)
+        print("| ", end="")
+        for j in range(size):
+            print(box[i][j], end=" | ")
+        print()
+
+    print(hrow)
+
