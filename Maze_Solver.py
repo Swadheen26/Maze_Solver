@@ -55,3 +55,58 @@ def printMaze(box, size):
 
     print(hrow)
 
+#Finding a path from the start to the end using BFS algorithm 
+def path_finding(maze,size):
+    start=(0,0)
+    end=(size-1,size-1)
+
+    paths = []
+    visited = set()
+    rows = len(maze)
+    cols = len(maze[0])
+
+    def algo_BFS(start,end):
+        queue=deque()
+        visited.add(start)
+        queue.append((start,[start]))
+
+        while queue:
+            curr,path=queue.popleft()
+            visited.add(curr)
+
+            if curr==end:
+                paths.append(path)
+            
+            else:
+                i, j = curr[0], curr[1]
+
+                directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+                for dx, dy in directions:
+                    new_i, new_j = i + dx, j + dy
+
+                    if new_i in range(rows) and new_j in range(cols) and (new_i, new_j) not in visited and maze[new_i][new_j] != Fore.RED + u"\u2593" + Fore.RESET:
+                        queue.append(((new_i, new_j), path + [(new_i, new_j)]))
+                        visited.add((new_i, new_j))
+    algo_BFS(start,end)
+    min_path=0
+
+    for i in range(len(paths)):
+        if len(paths[i])<len(paths[min_path]):
+            min_path=i
+    
+    path_found=1
+    
+    if(len(paths)>0):
+        for i in paths[min_path]:   
+            if((i[0]==0 and i[1]==0) or (i[0]==size-1 and i[1]==size-1)): # here is the condition to not change "S" and "E"
+                continue
+            else:
+                maze[i[0]][i[1]] =Fore.GREEN + u'\u25cd' + Fore.RESET
+    else:
+        path_found=0
+
+    if(path_found):
+        print('Maze with Path:')
+        printMaze(maze,size)
+    else:
+        print("No Path exists for the above maze..!")
