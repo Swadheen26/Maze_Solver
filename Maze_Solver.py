@@ -9,3 +9,16 @@ for Path : Circle With Vertical Fill(U+25CD)(Green)
 from colorama import Fore
 import random
 from collections import deque
+
+def mazeCreate(n):
+    maze = []
+    for i in range(n):
+        row = []
+        for j in range(n):
+            if i == 0 and j == 0:
+                row.append(Fore.GREEN + "S" + Fore.RESET)   #Start point (S) 
+            elif i == n - 1 and j == n- 1:
+                row.append(Fore.GREEN + "E" + Fore.RESET)   #End point (E)
+            else:
+                row.append(Fore.BLUE + u"\u25cc" + Fore.RESET)
+        maze.append(row)
