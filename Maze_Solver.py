@@ -22,3 +22,5 @@ def mazeCreate(n):
             else:
                 row.append(Fore.BLUE + u"\u25cc" + Fore.RESET)
         maze.append(row)
+
+
