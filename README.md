@@ -47,6 +47,22 @@ This Python project generates a maze and provides a simple console-based interfa
     ```bash
     pip install -r requirements.txt
     
-Usage
-```bash
-python maze_solver.py
+## Usage
+      ```bash
+      python maze_solver.py
+      
+## Contributing
+   - Contributions are welcome! Please feel free to submit a Pull Request or open an issue to improve the project.
+
+## License
+   - This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Acknowledgements
+   - The project uses the colorama library for colorful console output.
+   - The Breadth-First Search (BFS) algorithm is used for pathfinding.
+Contact
+   - For any inquiries or feedback, please contact [Swadheen26](https://github.com/Swadheen26).
+
+You can modify the contact section with your preferred contact method or additional acknowledgments as needed.
+
+
